@@ -3,7 +3,6 @@ package com.misha.a7minutesapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import com.misha.a7minutesapp.databinding.ActivityMainBinding
 
@@ -16,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         binding?.flStart?.setOnClickListener {
+            binding?.flStart?.isClickable = false
             val intent = Intent(this,ExercisesActivity::class.java)
             startActivity(intent)
         }

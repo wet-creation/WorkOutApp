@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="8dp"
     android:layout_height="match_parent"
     tools:context=".ExercisesActivity">
 
@@ -19,17 +20,19 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/tvTimerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/get_ready_for"
-        android:textColor="@color/accent"
-        android:textSize="@dimen/default_text_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/flGetReady"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgExercise"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        android:scaleType="fitXY"
+        tools:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
+        tools:src="@drawable/ic_step_up_onto_chair" />
+
+
 
     <FrameLayout
         android:id="@+id/flGetReady"
@@ -39,38 +42,60 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarExercise">
+        app:layout_constraintTop_toBottomOf="@+id/imgExercise">
+
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_gravity="center"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:max="10"
+            android:layout_gravity="center"
             android:background="@drawable/circular_progress_gray"
-            android:progressDrawable="@drawable/circular_progress_bar"
             android:indeterminate="false"
+            android:max="10"
             android:progress="100"
-            android:rotation="-90"/>
+            android:progressDrawable="@drawable/circular_progress_bar"
+            android:rotation="-90" />
+
         <LinearLayout
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/item_circular_color_accent_bg">
+            android:background="@drawable/item_circular_color_accent_bg"
+            android:gravity="center">
+
             <TextView
                 android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="10"
+                android:textColor="@color/white"
                 android:textSize="@dimen/default_text_size"
                 android:textStyle="bold"
-                android:textColor="@color/white"
-                />
+                tools:text="10" />
 
         </LinearLayout>
-
-
     </FrameLayout>
+    <TextView
+        android:id="@+id/tvTimerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_ready_for"
+        android:textColor="@color/accent"
+        android:textSize="@dimen/default_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flGetReady" />
+    <TextView
+        android:id="@+id/tvNameOfExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/get_ready_for"
+        android:textColor="@color/accent"
+        android:textSize="@dimen/default_text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTimerText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
