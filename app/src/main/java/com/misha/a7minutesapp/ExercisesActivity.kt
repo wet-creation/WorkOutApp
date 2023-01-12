@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.misha.a7minutesapp.databinding.ActivityExercisesBinding
 import com.misha.a7minutesapp.model.ExercisesModel

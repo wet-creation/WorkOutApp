@@ -30,7 +30,8 @@
         android:scaleType="fitXY"
         tools:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/toolbarExercise"
-        tools:src="@drawable/ic_step_up_onto_chair" />
+        tools:src="@drawable/ic_step_up_onto_chair"
+        tools:ignore="ContentDescription" />
 
 
 
