@@ -38,7 +38,7 @@ class ExercisesActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             onBackPressed()
         }
 
-
+        onInit(0)
 
     }
 

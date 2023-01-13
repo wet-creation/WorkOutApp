@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         binding?.flStart?.setOnClickListener {
-            binding?.flStart?.isClickable = false
             val intent = Intent(this,ExercisesActivity::class.java)
             startActivity(intent)
         }
