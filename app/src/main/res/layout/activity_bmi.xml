@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="8dp"
     android:orientation="vertical"
-    tools:context=".BmiActivity">
+    tools:context=".activities.BmiActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarBmi"
