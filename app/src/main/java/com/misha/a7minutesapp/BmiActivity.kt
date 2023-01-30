@@ -8,6 +8,13 @@ import android.widget.Toast
 import com.misha.a7minutesapp.databinding.ActivityBmiBinding
 
 class BmiActivity : AppCompatActivity() {
+
+    companion object{
+        private const val METRIC_UNIT_VIEW = "METRIC_UNIT_VIEW"
+        private const val US_UNIT_VIEW = "US_UNIT_VIEW"
+    }
+
+    private var currentVisibleUnit = METRIC_UNIT_VIEW
     private var binding:ActivityBmiBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,17 +28,59 @@ class BmiActivity : AppCompatActivity() {
           onBackPressed()
         }
         binding?.btnCalculate?.setOnClickListener {
-            if (binding?.inputHeight?.text?.isNotEmpty() == true && binding?.inputWeight?.text?.isNotEmpty() == true)
-                displayView()
-            else
-                Toast.makeText(this, "Input weight or height\nto calculate", Toast.LENGTH_SHORT).show()
+            if (currentVisibleUnit == METRIC_UNIT_VIEW) {
+                if (binding?.inputHeight?.text?.isNotEmpty() == true && binding?.inputWeightMetric?.text?.isNotEmpty() == true)
+                    displayView()
+                else
+                    Toast.makeText(this, "Input weight or height\nto calculate", Toast.LENGTH_SHORT)
+                        .show()
+            }
+            else{
+                if (binding?.inputFeet?.text?.isNotEmpty() == true && binding?.inputInch?.text?.isNotEmpty() == true
+                    && binding?.inputWeightUs?.text?.isNotEmpty() == true)
+                    displayView()
+                else
+                    Toast.makeText(this, "Input weight or height\nto calculate", Toast.LENGTH_SHORT)
+                        .show()
+            }
         }
+        binding?.rgUnits?.setOnCheckedChangeListener {_, id->
+            if(id == R.id.rbMetricUnits)
+                setMetricUnits()
+            else setUsUnits()
+        }
+
+    }
+
+    private fun setUsUnits() {
+        currentVisibleUnit = US_UNIT_VIEW
+        binding?.llShow?.visibility = View.INVISIBLE
+        binding?.llShowUs?.visibility = View.VISIBLE
+        binding?.llShowMetric?.visibility = View.GONE
+    }
+
+    private fun setMetricUnits() {
+        currentVisibleUnit = METRIC_UNIT_VIEW
+        binding?.llShow?.visibility = View.INVISIBLE
+        binding?.llShowMetric?.visibility = View.VISIBLE
+        binding?.llShowUs?.visibility = View.GONE
     }
 
     private fun calculate() : Double {
-        val weight = binding?.inputWeight?.text?.toString()?.toDouble()
-        val height = binding?.inputHeight?.text?.toString()?.toDouble()?.div(100)
-        return weight!! / (height!!*height)
+
+        return if (currentVisibleUnit == METRIC_UNIT_VIEW){
+            val weight = binding?.inputWeightMetric?.text.toString().toDouble()
+            val height = binding?.inputHeight?.text.toString().toDouble().div(100)
+            weight / (height*height)
+
+        } else {
+            val weight = binding?.inputWeightUs?.text.toString().toDouble()
+            val inch = binding?.inputInch?.text.toString().toDouble()
+            val feet = binding?.inputFeet?.text.toString().toDouble()*12
+            val height = feet + inch
+            (weight*703)/(height*height)
+        }
+
     }
 
     @SuppressLint("SetTextI18n")

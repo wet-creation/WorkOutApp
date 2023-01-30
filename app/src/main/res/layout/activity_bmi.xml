@@ -21,6 +21,50 @@
         app:titleTextColor="@color/primary">
 
     </androidx.appcompat.widget.Toolbar>
+
+    <RadioGroup
+        android:id="@+id/rgUnits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/drawable_radio_group_tab_background"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbMetricUnits"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="0.50"
+            android:background="@drawable/drawable_units_tab_selector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/metric_units"
+            android:textColor="@drawable/drawable_units_tab_text_color_selector"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rbUsUnits"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="0.50"
+            android:background="@drawable/drawable_units_tab_selector"
+            android:button="@null"
+            android:checked="false"
+            android:gravity="center"
+            android:text="@string/us_units"
+            android:textColor="@drawable/drawable_units_tab_text_color_selector"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RadioGroup>
+    <LinearLayout
+        android:id="@+id/llShowUs"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:visibility="gone">
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,9 +72,77 @@
         android:layout_marginTop="20dp"
         app:boxStrokeColor="@color/accent"
         app:hintTextColor="@color/accent"
->
+        >
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/inputWeight"
+            android:id="@+id/inputWeightUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable ="@null"
+            android:hint="@string/weight_in_pounds"
+            android:inputType="numberDecimal"
+            android:textColor="@color/accent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        app:boxStrokeColor="@color/accent"
+        app:hintTextColor="@color/accent"
+        >
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputFeet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable ="@null"
+            android:hint="FEET"
+            android:inputType="numberDecimal"
+            android:textColor="@color/accent" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="20dp"
+        app:boxStrokeColor="@color/accent"
+        app:hintTextColor="@color/accent"
+        >
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputInch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textCursorDrawable ="@null"
+            android:hint="INCH"
+            android:inputType="numberDecimal"
+            android:textColor="@color/accent" />
+    </com.google.android.material.textfield.TextInputLayout>
+</LinearLayout>
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/llShowMetric"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="20dp"
+        app:boxStrokeColor="@color/accent"
+        app:hintTextColor="@color/accent"
+        >
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/inputWeightMetric"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textCursorDrawable ="@null"
@@ -38,8 +150,6 @@
             android:inputType="numberDecimal"
             android:textColor="@color/accent" />
     </com.google.android.material.textfield.TextInputLayout>
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,6 +167,7 @@
             android:inputType="numberDecimal"
             android:textColor="@color/accent" />
     </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llShow"
