@@ -14,4 +14,6 @@
     <string name="metric_units">METRIC UNITS</string>
     <string name="us_units">US UNITS</string>
     <string name="weight_in_pounds">WEIGHT (in pounds)</string>
+    <string name="calendar">calendar</string>
+    <string name="history_is_empty">HISTORY IS EMPTY</string>
 </resources>
